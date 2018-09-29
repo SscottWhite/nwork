@@ -2,16 +2,16 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.NcUser;
 import com.example.demo.otherstool.ObjectUtil;
+import com.example.demo.otherstool.StringUtil;
 import com.example.demo.service.UserService;
 import com.example.demo.utils.EcomResultCode;
 import com.example.demo.utils.EcomResultDO;
-import com.example.demo.utils.ExcelSheetUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.exception.ExceptionUtils;
-import org.apache.ibatis.reflection.ExceptionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Slf4j
@@ -47,10 +47,12 @@ public class UserController {
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
-    public EcomResultDO<Boolean> login(@RequestBody NcUser ncUser){
+    public EcomResultDO<Boolean> login(HttpServletRequest request,
+                                       @RequestBody NcUser ncUser){
         EcomResultDO<Boolean> result = new EcomResultDO<>(EcomResultCode.TRUE,true);
         try{
             result = userService.login(ncUser);
+            System.out.println(StringUtil.getIpAddress(request));
         }catch (Exception e){
             String errorLog = ExceptionUtils.getStackTrace(e);
             log.error(errorLog);
@@ -58,5 +60,6 @@ public class UserController {
         }
         return result;
     }
+
 
 }

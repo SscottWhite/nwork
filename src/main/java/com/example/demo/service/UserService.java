@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.NcUser;
+import com.example.demo.otherstool.MD5Util;
 import com.example.demo.otherstool.ObjectUtil;
 import com.example.demo.repository.UserMapper;
 import com.example.demo.utils.EcomResultCode;
@@ -9,6 +10,7 @@ import com.taobao.txc.client.aop.annotation.TxcTransaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 @Service
@@ -37,6 +39,7 @@ public class UserService {
         if(ObjectUtil.isNotEmpty(list)){
             throw new Exception("用户编号已存在");
         }
+        ncUser.setUserPass(MD5Util.encodeMD5(ncUser.getUserPass()));
         if(userMapper.inserUser(ncUser) < 0){
             throw new Exception("添加失败,联系开发");
         }
@@ -60,6 +63,13 @@ public class UserService {
         }
         if(ncUser.getUserNo() == null){
             result = new EcomResultDO<>(EcomResultCode.COMMON_FAIL,"请填写账号",true);
+            result.setData(Boolean.FALSE);
+            return result;
+        }
+        try {
+            ncUser.setUserPass(MD5Util.encodeMD5(ncUser.getUserPass()));
+        } catch (NoSuchAlgorithmException e) {
+            result = new EcomResultDO<>(EcomResultCode.COMMON_FAIL,"程序报错,赶紧联系管理员",true);
             result.setData(Boolean.FALSE);
             return result;
         }
