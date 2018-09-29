@@ -7,12 +7,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @author Chen Xinjie chenxinjie@bosideng.com
- * @ClassName: ObjectUtil
- * @Description: TODO 对象转换工具
- * @date 2016年3月16日 下午2:41:41
- */
+
 public final class ObjectUtil {
 
     /**

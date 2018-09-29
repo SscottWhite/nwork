@@ -10,12 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-/**
- * @ClassName:  DateUtil
- * @Description: 日期工具类
- * @author: Chen Xinjie
- * @date:   2018年2月25日 上午10:38:10
- */
+
 public abstract class DateUtil {
 
   private final static String myFmt4 = new String("yyyy-MM-dd HH:mm:ss:SSS");

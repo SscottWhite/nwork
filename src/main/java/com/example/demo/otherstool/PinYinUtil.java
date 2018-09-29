@@ -7,12 +7,7 @@ import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
 import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType;
 import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
 
-/**
- * @ClassName: PinYinUtil
- * @Description:TODO 拼音工具
- * @author: Chen Xinjie
- * @date: 2018年1月15日 下午2:50:32
- */
+
 public final class PinYinUtil {
 
 	/**

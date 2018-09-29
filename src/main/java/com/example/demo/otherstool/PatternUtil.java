@@ -6,13 +6,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * @ClassName: PatternUtil
- * @Description: TODO 正则表达式工具
- * @author Chen Xinjie chenxinjie@bosideng.com
- * @date 2016年3月18日 上午9:06:13
- * 
- */
+
 public final class PatternUtil {
 	
 //	public static final String SL_REGEX_DOUHAO= "(([0-9]{1,2}|[A-Z]{1})-[0-9]{1}-[0-9]{1}-[0-9]{1}-[0-9]{1}\\,*)*([0-9]{2}-[0-9]{1}-[0-9]{1}-[0-9]{1}-[0-9]{1})$";

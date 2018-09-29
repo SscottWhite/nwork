@@ -5,14 +5,7 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * @ClassName: PageVO
- * @Description: TODO 管理后台分页返回对象
- * @author Chen Xinjie chenxinjie@bosideng.com
- * @date 2016年3月7日 下午12:59:39
- * 
- * @param <T>
- */
+
 @Data
 public class PageVO<T> implements Serializable {
 	

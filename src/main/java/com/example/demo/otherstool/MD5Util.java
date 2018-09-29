@@ -5,13 +5,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 
-/**
- * @ClassName: MD5Util
- * @Description: TODO MD5 加密方法
- * @author Chen Xinjie chenxinjie@bosideng.com
- * @date 2016年3月11日 下午2:32:05
- * 
- */
+
 public final class MD5Util {
 
 	/**

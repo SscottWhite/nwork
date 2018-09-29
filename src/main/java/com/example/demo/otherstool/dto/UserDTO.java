@@ -5,13 +5,7 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * @ClassName: UserDTO
- * @Description: TODO 用户 DTO
- * @author Chen Xinjie chenxinjie@bosideng.com
- * @date 2016年3月14日 下午3:17:58
- * 
- */
+
 @Data
 public class UserDTO implements Serializable {
 

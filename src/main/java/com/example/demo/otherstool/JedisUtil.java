@@ -12,12 +12,7 @@ import java.io.IOException;
 import java.util.*;
 
 
-/**
- * @author Chen Xinjie chenxinjie@bosideng.com
- * @ClassName: JedisUtil
- * @Description: TODO Jedis 工具类
- * @date 2016年3月15日 下午1:18:55
- */
+
 @Slf4j
 public final class JedisUtil {
 

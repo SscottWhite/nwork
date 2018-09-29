@@ -8,11 +8,6 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * 
- * create by zzc on 2018/1/1
- * 
- */
 
 public class CheckUtil {
 

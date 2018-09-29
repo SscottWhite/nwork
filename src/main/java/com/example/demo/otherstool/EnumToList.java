@@ -7,13 +7,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 
- * @ClassName:  EnumToList   
- * @Description:TODO(这里用一句话描述这个类的作用)   
- * @author: james
- * @date:   2018年2月25日 下午4:12:56
- */
+
 public class EnumToList {
 
     public static String getText(Class<?> ref , String code) {

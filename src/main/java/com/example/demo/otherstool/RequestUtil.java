@@ -7,12 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.net.URLDecoder;
 
-/**
- * @ClassName: RequestUtil.java
- * @Description: 请求帮助类,用于获取header中的请求信息
- * @Created By:  wangzh 2018-06-05 13:57
- * @Updated By:  修改人  日期  时间  修改说明
- **/
+
 public class RequestUtil {
 	
 	/**

@@ -20,13 +20,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * @ClassName: ExcelUtil
- * @Description: TODO
- * @author Chen Xinjie chenxinjie@bosideng.com
- * @date 2016年12月15日 下午4:43:08
- * 
- */
+
 @Slf4j
 public class ExcelUtil {
 

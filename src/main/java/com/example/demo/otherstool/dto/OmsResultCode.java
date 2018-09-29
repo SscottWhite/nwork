@@ -1,11 +1,6 @@
 package com.example.demo.otherstool.dto;
 
-/**
- * @ClassName: OmsResultCode
- * @Description: TODO OMS 项目，返回参数
- * @author: chenxinjie
- * @date: 2017年12月21日 下午1:29:50
- */
+
 public class OmsResultCode extends EcomResultCode {
 
 	public  static String OMS_ERROR = "0002";

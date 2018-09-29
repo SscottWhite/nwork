@@ -3,13 +3,7 @@ package com.example.demo.otherstool.dto;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @ClassName: BaseResultCode
- * @Description: TODO 基础返回码
- * @author Chen Xinjie chenxinjie@bosideng.com
- * @date 2016年3月11日 上午10:14:38
- * 
- */
+
 public abstract class EcomResultCode {
 
 	public static Map<String, String> map = new HashMap<String, String>();

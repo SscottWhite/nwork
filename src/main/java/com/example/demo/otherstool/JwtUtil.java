@@ -23,13 +23,7 @@ import java.util.*;
 
 //import com.sun.javafx.tools.packager.Log;
 
-/**
- * @ClassName: JwtUtil
- * @Description: TODO JWT令牌工具类
- * @author james	tianzhiqiang@bosideng.com
- * @date 2018年1月3日 下午1:18:55
- *
- */
+
 @Slf4j
 @Component
 public class JwtUtil {

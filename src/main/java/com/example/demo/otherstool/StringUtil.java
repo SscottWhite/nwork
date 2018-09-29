@@ -12,12 +12,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * @ClassName: StringUtil
- * @Description:字符串处理工具类
- * @author: qian li
- * @date: 2018年02月07日 19:09
- */
+
 @Slf4j
 public class StringUtil {
 	

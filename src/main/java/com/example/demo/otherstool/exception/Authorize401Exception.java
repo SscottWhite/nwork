@@ -1,11 +1,6 @@
 package com.example.demo.otherstool.exception;
 
-/**
- * @ClassName: Authorize401Exception
- * @Description:TODO 异常处理定义
- * @author: james
- * @date: 2018年02月07日 12:04
- */
+
 public class Authorize401Exception extends Exception{
 
     /**
