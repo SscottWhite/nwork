@@ -21,7 +21,16 @@ public interface UserMapper {
             "   ,#{userRight})")
     int inserUser(NcUser ncUser);
 
-    @Select("select * from nc_user where user_no = #{userNo}")
+    @Select("<script>" +
+            "select " +
+            "* " +
+            "from " +
+            "nc_user " +
+            "where user_no = #{userNo}" +
+            "<if test=\"userPass != null\">" +
+            "and user_pass = #{userPass}" +
+            "</if>" +
+            "</script>")
     @Results({
             @Result(column = "id",property = "id",jdbcType = JdbcType.INTEGER),
             @Result(column = "user_no",property = "userNo",jdbcType = JdbcType.INTEGER),
@@ -30,5 +39,7 @@ public interface UserMapper {
             @Result(column = "user_right",property = "userRight",jdbcType = JdbcType.INTEGER),
             @Result(column = "ts",property = "ts",jdbcType = JdbcType.TIMESTAMP)
     })
-    List<NcUser> userList(@Param("userNo") Integer userNo);
+    List<NcUser> userList(NcUser ncUser);
+
+
 }
