@@ -21,6 +21,7 @@ public class ShopService {
     @Transactional(rollbackOn = Exception.class)
     public boolean insertShop(BdShop bdShop){
         int j =  shopMapper.insertDate(bdShop) ;
+        System.out.println("id?:"+bdShop.getId());//可用
         return j>0;
     }
     //更新一条

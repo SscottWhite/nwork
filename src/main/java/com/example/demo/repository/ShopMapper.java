@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface ShopMapper {
-    @Select("select * from bd_shop where shop_no = #{shopNo}")
+    @Select("select * from nc_shop where shop_no = #{shopNo}")
     @Results({
             @Result(column = "id", property = "id", jdbcType = JdbcType.INTEGER),
             @Result(column = "shop_no", property = "shopNo", jdbcType = JdbcType.INTEGER),
@@ -19,16 +19,19 @@ public interface ShopMapper {
     })
     List<BdShop> getList(@Param("shopNo")Integer shopNo);
 
-    @Insert("   INSERT INTO bd_shop" +
+    @Insert("   INSERT INTO nc_shop" +
             "   (shop_no , " +
-            "   shop_name) " +
+            "   shop_name," +
+            "   shop_type) " +
             "   VALUES " +
             "   (#{shopNo}, " +
-            "   #{shopName})")
+            "   #{shopName}," +
+            "   1)")
+    @Options(useGeneratedKeys=true, keyProperty="id")
     int insertDate(BdShop bdShop);
 
     @Update(" update " +
-            " bd_shop " +
+            " nc_shop " +
             " set " +
             " shop_name = #{shopName} " +
             " where " +
@@ -37,13 +40,14 @@ public interface ShopMapper {
 
 
     @Insert("   <script> " +
-            "   insert into bd_shop" +
-            "   (shop_no ,shop_name) " +
+            "   insert into nc_shop" +
+            "   (shop_no ,shop_name,shop_type) " +
             "   VALUES" +
             "   <foreach collection=\"list\" item=\"i\"   separator=\",\" >" +
             "   <trim prefix=\"(\" suffix=\")\" suffixOverrides=\",\" >"+
             "   #{i.shopNo,jdbcType=INTEGER}," +
             "   #{i.shopName,jdbcType=VARCHAR}," +
+            "   1," +
             "   </trim> " +
             "   </foreach> " +
             "   </script>")

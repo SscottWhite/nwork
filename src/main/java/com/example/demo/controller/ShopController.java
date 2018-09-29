@@ -63,4 +63,10 @@ public class ShopController {
     public List<BdShop> getList(@RequestBody BdShop bdShop) {
         return shopService.getList(bdShop.getShopNo());
     }
+
+    @RequestMapping(value = "/insertOne", method = RequestMethod.POST)
+    @ResponseBody
+    public boolean insertOne(@RequestBody BdShop bdShop) {
+        return shopService.insertShop(bdShop);
+    }
 }
