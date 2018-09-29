@@ -3,6 +3,7 @@ package com.example.demo.repository;
 import com.example.demo.entity.NcUser;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -41,5 +42,42 @@ public interface UserMapper {
     })
     List<NcUser> userList(NcUser ncUser);
 
+
+    @Select("select user_no from nc_user")
+    @Results({
+            @Result(column = "user_no",property = "userNo",jdbcType = JdbcType.INTEGER)
+    })
+    List<Integer> getListNos();
+
+
+    @Insert("   <script> " +
+            "   insert into nc_user" +
+            "   (user_no" +
+            "   ,user_name" +
+            "   ,user_pass" +
+            "   ,user_right)" +
+            "   values " +
+            "   <foreach collection=\"list\"   item=\"i\"  separator=\",\" >" +
+            "   <trim  prefix=\"(\"   suffix=\")\" suffixOverrides=\",\" >"+
+            "   #{i.userNo,jdbcType=INTEGER},   " +
+            "   #{i.userName,jdbcType=VARCHAR}, " +
+            "   #{i.userPass,jdbcType=VARCHAR}, " +
+            "   #{i.userRight,jdbcType=INTEGER}," +
+            "   </trim> " +
+            "   </foreach> " +
+            "   </script>")
+    int insertList(@Param("list")List<NcUser> list);
+
+
+    @Update("<script> " +
+            "    update " +
+            "    nc_user  set " +
+            "    user_name=#{userName}" +
+            "   , user_pass=#{userPass}" +
+            "   , user_right=#{userRight}" +
+            "    where " +
+            "    user_no = #{userNo} " +
+            "</script> ")
+    int updateList(NcUser ncUser);
 
 }
