@@ -11,5 +11,6 @@ public class NcUser {
     private String userName;
     private String userPass;
     private Integer userRight;//用户角色权限(0,管理员;1,普通用户,2,普通会员,3,黄金会员,4,普通年费会员,5,黄金年费会员)
+    private Integer userValid;//是否启动,0否1是
     private Date ts;
 }

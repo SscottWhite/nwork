@@ -14,12 +14,14 @@ public interface UserMapper {
             "   (user_no" +
             "   ,user_name" +
             "   ,user_pass" +
-            "   ,user_right)" +
+            "   ,user_right" +
+            "   ,user_valid)" +
             "   values" +
             "   (#{userNo}" +
             "   ,#{userName}" +
             "   ,#{userPass}" +
-            "   ,#{userRight})")
+            "   ,#{userRight}" +
+            "   ,#{userValid})")
     int inserUser(NcUser ncUser);
 
     @Select("<script>" +
@@ -38,12 +40,13 @@ public interface UserMapper {
             @Result(column = "user_name",property = "userName",jdbcType = JdbcType.VARCHAR),
             @Result(column = "user_pass",property = "userPass",jdbcType = JdbcType.VARCHAR),
             @Result(column = "user_right",property = "userRight",jdbcType = JdbcType.INTEGER),
-            @Result(column = "ts",property = "ts",jdbcType = JdbcType.TIMESTAMP)
+            @Result(column = "ts",property = "ts",jdbcType = JdbcType.TIMESTAMP),
+            @Result(column = "user_valid",property = "userValid",jdbcType = JdbcType.INTEGER)
     })
     List<NcUser> userList(NcUser ncUser);
 
 
-    @Select("select user_no from nc_user")
+    @Select("select user_no from nc_user where user_valid = 1")
     @Results({
             @Result(column = "user_no",property = "userNo",jdbcType = JdbcType.INTEGER)
     })
@@ -55,7 +58,8 @@ public interface UserMapper {
             "   (user_no" +
             "   ,user_name" +
             "   ,user_pass" +
-            "   ,user_right)" +
+            "   ,user_right" +
+            "   ,user_valid)" +
             "   values " +
             "   <foreach collection=\"list\"   item=\"i\"  separator=\",\" >" +
             "   <trim  prefix=\"(\"   suffix=\")\" suffixOverrides=\",\" >"+
@@ -63,6 +67,7 @@ public interface UserMapper {
             "   #{i.userName,jdbcType=VARCHAR}, " +
             "   #{i.userPass,jdbcType=VARCHAR}, " +
             "   #{i.userRight,jdbcType=INTEGER}," +
+            "   1," +
             "   </trim> " +
             "   </foreach> " +
             "   </script>")
@@ -75,6 +80,7 @@ public interface UserMapper {
             "    user_name=#{userName}" +
             "   , user_pass=#{userPass}" +
             "   , user_right=#{userRight}" +
+            "   , user_valid=#{userValid}" +
             "    where " +
             "    user_no = #{userNo} " +
             "</script> ")
