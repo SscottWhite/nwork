@@ -21,3 +21,8 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     # 使用druid数据源
     type: com.alibaba.druid.pool.DruidDataSource
+
+  #mvc:
+    #view:
+    #  prefix:/WEB-INF/views/
+     # suffix:.jsp

@@ -6,8 +6,6 @@ import com.example.demo.otherstool.StringUtil;
 import com.example.demo.service.UserService;
 import com.example.demo.utils.EcomResultCode;
 import com.example.demo.utils.EcomResultDO;
-import com.example.demo.utils.ExcelSheetUtil;
-import com.example.demo.utils.ExcelUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
