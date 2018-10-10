@@ -27,4 +27,24 @@ public interface ShopUserMapper {
             @Result(column = "user_name",property = "userName",jdbcType = JdbcType.VARCHAR)
     })
     List<ShopUser> getList(@Param("shopNo")Integer shopNo);
+
+
+    @Select("<script>" +
+            " select " +
+            "   <![CDATA[ " +
+            "   @userno := (case user_no" +
+            "        when #{userNo} then 1234 " +
+            "        when #{shopNo} then 12345" +
+            "        else 123456 end) " +
+            "   ]]> " +
+            "   , if(@userno = 1234,@userno - 1,0) newUserNo " +
+            "   , if(@userno = 12345,@userno - 1 ,0) newShopNo " +
+            "  from nc_user " +
+            "</script>")
+    @Results({
+            @Result(column = "newUserNo",property = "newUserNo",jdbcType = JdbcType.INTEGER),
+            @Result(column = "newShopNo",property = "newShopNo",jdbcType = JdbcType.INTEGER)
+    })
+    List<ShopUser> getNewList(@Param("userNo") Integer userNo,
+                              @Param("shopNo") Integer shopNo);
 }

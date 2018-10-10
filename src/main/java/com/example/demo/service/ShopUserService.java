@@ -17,4 +17,7 @@ public class ShopUserService {
         return shopUserMapper.getList(shopNo);
     }
 
+
+    public List<ShopUser> getNewList(Integer userNo, Integer shopNo){return shopUserMapper.getNewList(userNo,shopNo);}
+
 }

@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 
+import com.example.demo.entity.BdShop;
 import com.example.demo.entity.ShopUser;
 import com.example.demo.service.ShopUserService;
 import com.example.demo.utils.EcomResultDO;
@@ -21,6 +22,15 @@ public class ShopUserController {
     public EcomResultDO<List<ShopUser>> getList(@RequestBody Integer shopNo){
         EcomResultDO<List<ShopUser>> result = new EcomResultDO<>();
         List<ShopUser> list = shopUserService.getList(shopNo);
+        result.setData(list);
+        return result;
+    }
+
+    @RequestMapping(value = "/new",method = RequestMethod.POST)
+    @ResponseBody
+    public EcomResultDO<List<ShopUser>> getNewList(@RequestBody BdShop bdShop){
+        EcomResultDO<List<ShopUser>> result = new EcomResultDO<>();
+        List<ShopUser> list = shopUserService.getNewList(bdShop.getUserNo(),bdShop.getShopNo());
         result.setData(list);
         return result;
     }

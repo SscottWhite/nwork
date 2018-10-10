@@ -26,4 +26,9 @@ public class PostHttpClient {
         System.out.println(dto);
         return jsonStr;
     }
+
+    @RequestMapping("/index")
+    public  String index(){
+        return "index.jsp";
+    }
 }

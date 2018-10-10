@@ -8,4 +8,7 @@ public class ShopUser {
     private Integer userShopNo;
     private String userName;
     private String shopName;
+
+    private Integer newShopNo;
+    private Integer newUserNo;
 }

@@ -11,4 +11,5 @@ public class BdShop {
     private String  shopName;
     private Integer shopType;
     private Date ts;
+    private Integer userNo;
 }
