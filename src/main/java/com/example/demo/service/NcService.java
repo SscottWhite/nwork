@@ -20,4 +20,8 @@ public class NcService {
         result.setData(ncStuMapper.get(id));
         return result;
     }
+
+    public List<Integer> getI(Integer id){
+        return ncStuMapper.getI(id);
+    }
 }

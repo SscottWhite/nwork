@@ -13,11 +13,14 @@ import java.util.List;
 @Repository
 public interface NcStuMapper {
 
-    //这个写法有问题,不过不清楚
-    @Select("set @r := (select GROUP_CONCAT(tid ORDER BY tid asc) from nc_sc where id = #{id}); " +
+    //这个写法有问题,不过不清楚,好像是set的问题
+    /*@Select("set @r := (select GROUP_CONCAT(tid ORDER BY tid asc) from nc_sc where id = #{id}); " +
             "select * from nc_students where id in " +
             "(select ac.id from (select id,GROUP_CONCAT(tid ORDER BY tid asc) name1 from nc_sc group by id) ac " +
-            "where ac.name1 = @r)")
+            "where ac.name1 = @r)")*/
+    @Select("select * from nc_students where id in " +
+            "(select ac.id from (select id,GROUP_CONCAT(tid ORDER BY tid asc) name1 from nc_sc group by id) ac " +
+            "where ac.name1 = (select GROUP_CONCAT(tid ORDER BY tid asc) from nc_sc where id = #{id}))")
     @Results({
             @Result(column = "id",property = "id",jdbcType = JdbcType.INTEGER),
             @Result(column = "name",property = "name",jdbcType = JdbcType.VARCHAR),
@@ -25,4 +28,10 @@ public interface NcStuMapper {
             @Result(column = "sex",property = "sex",jdbcType = JdbcType.VARCHAR)
     })
     List<NcStudents> get(@Param("id")Integer id);
+
+    @Select("<script>" +
+            "select ac.id from (select id,GROUP_CONCAT(tid ORDER BY tid asc) name1 from nc_sc group by id) ac " +
+            "where ac.name1 = (select GROUP_CONCAT(tid ORDER BY tid asc) from nc_sc where id = #{id})" +
+            "</script>")
+    List<Integer> getI(@Param("id")Integer id);
 }

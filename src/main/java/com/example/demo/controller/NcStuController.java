@@ -23,4 +23,9 @@ public class NcStuController {
         EcomResultDO<List<NcStudents>> result = ncService.get(students.getId());
         return result;
     }
+
+    @RequestMapping(value = "getI",method = RequestMethod.POST)
+    public List<Integer> getI( @RequestBody NcStudents students){
+        return ncService.getI(students.getId());
+    }
 }
