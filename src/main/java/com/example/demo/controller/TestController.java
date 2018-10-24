@@ -2,7 +2,7 @@ package com.example.demo.controller;
 
 public class TestController {
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         int array[] = new int[]{2,3,41,4,21,1,20};
        // System.out.println(array.length);//5
 
@@ -15,6 +15,30 @@ public class TestController {
                     array[j] = array[j+1];
                     array[j+1] = temp;
                 }
+            }
+        }
+        for (int i : array) {
+            System.out.println(i);
+        }
+    }*/
+
+    //一个循环
+    public static void main(String[] args) {
+        int array[] = new int[]{2,3,41,4,21,1,20};
+        //System.out.println(array.length);
+
+        int len = array.length-1;
+        int temp = 0;
+        for (int i = 0;i < len ; i++){
+            if(array[i] > array[i+1]){
+                temp = array[i];
+                array[i] = array[i+1];
+                array[i+1] = temp;
+            }
+            //其实原理和上面一样,保证从0开始,长度比较少一位
+            if (i == len - 1) {
+                i = -1;//有i++,保证从0 开始
+                len--;
             }
         }
         for (int i : array) {
