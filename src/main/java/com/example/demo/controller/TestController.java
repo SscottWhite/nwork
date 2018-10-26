@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.utils.ExcelUtil;
+import com.google.common.collect.Lists;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
 import java.sql.Array;
@@ -53,7 +54,7 @@ public class TestController {
         }
     }*/
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         //插入排序
         int array[] = new int[]{49,38,65,97,76,13,27,49,78,34,12,64,1};
         for(int i = 1; i<array.length ; i++){
@@ -71,7 +72,7 @@ public class TestController {
         for (int i : array) {
             System.out.println(i);
         }
-    }
+    }*/
 
    // public static void main(String[] args) {
         /*List<List<String>> data = new ArrayList<>();
@@ -102,4 +103,15 @@ public class TestController {
             System.out.println("nogood");
         }*/
    // }
+
+
+    public static void main(String[] args) {
+        long timeB = System.currentTimeMillis();
+        List<Integer> list = Arrays.asList(1,2,3,4,5,6,6,7,8,8,9);
+        List<List<Integer>> list1 = Lists.partition(list,3);
+        System.out.println(list1);
+        long timeA = System.currentTimeMillis();
+
+        System.out.println(timeA-timeB);
+    }
 }
