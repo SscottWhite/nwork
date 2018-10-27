@@ -7,6 +7,9 @@ import org.apache.commons.lang3.exception.ExceptionUtils;
 import java.sql.Array;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class TestController {
 
@@ -105,13 +108,37 @@ public class TestController {
    // }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         long timeB = System.currentTimeMillis();
         List<Integer> list = Arrays.asList(1,2,3,4,5,6,6,7,8,8,9);
         List<List<Integer>> list1 = Lists.partition(list,3);
         System.out.println(list1);
+        ExecutorService exec = Executors.newFixedThreadPool(5);
+        for (final List<Integer> it : list1) {
+            final Object lock = new Object();
+            Runnable task = new Runnable() {
+                @Override
+                public void run() {
+                    for (Integer its : it) {
+                        synchronized (lock){
+                            System.out.println(its);
+                        }
+                    }
+                }
+            };
+            exec.submit(task);
+        }
+        exec.shutdown();
+        exec.awaitTermination(1, TimeUnit.MINUTES);
         long timeA = System.currentTimeMillis();
-
         System.out.println(timeA-timeB);
+        /*Map<String,Object> map = new HashMap();
+        map.put(null,null);
+        System.out.println(map.containsKey(null));
+        System.out.println(map.size());*/
+
+
+
+
     }
 }
