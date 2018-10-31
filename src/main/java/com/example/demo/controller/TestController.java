@@ -108,7 +108,7 @@ public class TestController {
    // }
 
 
-    public static void main(String[] args) throws InterruptedException {
+   /* public static void main(String[] args) throws InterruptedException {
         long timeB = System.currentTimeMillis();
         List<Integer> list = Arrays.asList(1,2,3,4,5,6,6,7,8,8,9);
         List<List<Integer>> list1 = Lists.partition(list,3);
@@ -132,13 +132,24 @@ public class TestController {
         exec.awaitTermination(1, TimeUnit.MINUTES);
         long timeA = System.currentTimeMillis();
         System.out.println(timeA-timeB);
-        /*Map<String,Object> map = new HashMap();
+        *//*Map<String,Object> map = new HashMap();
         map.put(null,null);
         System.out.println(map.containsKey(null));
-        System.out.println(map.size());*/
+        System.out.println(map.size());*//*
 
 
 
 
+    }*/
+
+    public static void main(String[] args) {
+       // System.out.println(((true && true) || (true || false)) && (true && true));
+        int i ;
+        int w = 0;
+        for( i = 0; i<7 ;i++){
+            i = i+2;
+            w = i % 2;
+        }
+        System.out.println(i+","+w);
     }
 }

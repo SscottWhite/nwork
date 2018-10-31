@@ -1,31 +1,23 @@
 package com.example.demo.otherstool;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.util.FileCopyUtils;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.util.Date;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 /**
- *
  * CSV文件导出工具类
- *
- * Created on 2014-08-07
- * @author
- * @reviewer
  */
+@Slf4j
 public class CSVUtil {
 
-    /**
-     * CSV文件生成方法
-     * @param head
-     * @param dataList
-     * @param outPutPath
-     * @param filename
-     * @return
-     */
-    public static File createCSVFile(List<Object> head, List<List<Object>> dataList,
+   /* public static File createCSVFile(List<Object> head, List<List<Object>> dataList,
                                      String outPutPath, String filename, HttpServletResponse response) {
 
         File csvFile = null;
@@ -66,6 +58,109 @@ public class CSVUtil {
         return csvFile;
     }
 
+    */
+   /*
+    private static void writeRow(List<Object> row, BufferedWriter csvWriter) throws IOException {
+        // 写入文件头部
+        for (Object data : row) {
+            StringBuffer sb = new StringBuffer();
+            String rowStr = sb.append("\"").append(data).append("\",").toString();
+            csvWriter.write(rowStr);
+        }
+        csvWriter.newLine();
+    }*/
+
+    public static File createCSVFile(final List<Object> head, List<List<Object>> dataList,
+                                     final String outPutPath,final String filename) {
+
+        File csvFile = null;
+        File zipFile = null;
+        BufferedWriter csvWtriter = null;
+        //File.separator类似于分隔符
+        final String fileName = outPutPath + File.separator + filename;
+
+        try {
+            zipFile = new File(fileName+".zip");
+            final ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(zipFile));
+            zipOut.setLevel(0);//压缩等级,数字越高文件越小 0-9
+            //zipOut.
+
+
+            csvFile = new File(fileName + ".csv");
+            File parent = csvFile.getParentFile();
+            if (parent != null && !parent.exists()) {
+                parent.mkdirs();
+            }
+            csvFile.createNewFile();
+
+            csvWtriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(csvFile)
+                    , "GB2312"), 1024);
+            writeRow(head, csvWtriter);
+            for (List<Object> row : dataList) {
+                writeRow(row, csvWtriter);
+            }
+            csvWtriter.flush();
+            zipOut.putNextEntry(new ZipEntry(csvFile.getName())) ;
+            InputStream input = new FileInputStream(csvFile) ;
+            int temp = 0 ;
+            while((temp=input.read())!=-1){	// 读取内容
+                zipOut.write(temp) ;	// 压缩输出
+            }
+            input.close() ;	// 关闭输入流
+            zipOut.close() ;
+            csvWtriter.close();
+
+            csvFile.delete();//多一个文件
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+        }
+        return zipFile;
+    }
+
+
+
+    private static void doZip(Integer index,ZipOutputStream zipOut,String filename,List<Object> head, List<List<Object>> dataList){
+        try{
+            log.debug("开始压缩线程"+index);
+            zipOut.setLevel(0);
+            log.debug(FastJsonUtil.toJsonString(zipOut));
+
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            File csvFile = new File(filename+index+".csv");
+            Long start = new Date().getTime();
+            File parent = csvFile.getParentFile();
+            if (parent != null && !parent.exists()) {
+                parent.mkdirs();
+            }
+            csvFile.createNewFile();
+            log.debug("创建csv");
+            BufferedWriter csvWtriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(
+                    csvFile), "GB2312"), 1024);
+            writeRow(head, csvWtriter);
+            for (List<Object> row : dataList) {
+                writeRow(row, csvWtriter);
+            }
+            csvWtriter.flush();
+            Long start2 = new Date().getTime();
+            log.debug("开始压缩csv");
+
+
+            zipOut.putNextEntry(new ZipEntry(filename+index+".csv")) ;
+            InputStream input = new FileInputStream(csvFile) ;
+            int temp = 0 ;
+            while((temp=input.read())!=-1){	// 读取内容
+                zipOut.write(temp) ;	// 压缩输出
+            }
+            input.close() ;	// 关闭输入流
+            zipOut.close() ;
+            csvWtriter.close();
+            log.debug("zip生成耗时:"+String.valueOf(new Date().getTime() - start2));
+        }catch (Exception e){
+            log.debug(StringUtil.getExecptionMessage(e));
+        }
+    }
+
     /**
      * 写一行数据方法
      * @param row
@@ -81,6 +176,4 @@ public class CSVUtil {
         }
         csvWriter.newLine();
     }
-
-
 }
