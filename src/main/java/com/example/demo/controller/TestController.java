@@ -147,7 +147,7 @@ public class TestController {
         int i ;
         int w = 0;
         for( i = 0; i<7 ;i++){
-            i = i+2;
+            i = i + 2;
             w = i % 2;
         }
         System.out.println(i+","+w);
