@@ -12,4 +12,5 @@ public class BdShop {
     private Integer shopType;
     private Date ts;
     private Integer userNo;
+    private Integer page;
 }

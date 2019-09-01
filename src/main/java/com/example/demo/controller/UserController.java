@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -91,7 +93,7 @@ public class UserController {
 
 
     public void exportFile(){
-
+        Map<Integer,String> map1 = new HashMap<>();
     }
 
 }
