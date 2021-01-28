@@ -83,7 +83,7 @@
         </dependency>
 
 
-        <dependency>
+      <!--  <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
         </dependency>
@@ -114,7 +114,7 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpmime</artifactId>
-        </dependency>
+        </dependency>-->
 <!--
         <dependency>
             <groupId>com.taobao.txc</groupId>
@@ -198,11 +198,11 @@
         </dependency>
 
         <!--推荐使用listS分页-->
-        <dependency>
+       <!-- <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>19.0</version>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
 
