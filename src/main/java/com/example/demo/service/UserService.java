@@ -7,7 +7,7 @@ import com.example.demo.repository.UserMapper;
 import com.example.demo.utils.EcomResultCode;
 import com.example.demo.utils.EcomResultDO;
 import com.example.demo.utils.ExcelUtil;
-import com.taobao.txc.client.aop.annotation.TxcTransaction;
+//import com.taobao.txc.client.aop.annotation.TxcTransaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,7 +28,7 @@ public class UserService {
         return result;
     }
 
-    @TxcTransaction(timeout = 60*1000)
+   // @TxcTransaction(timeout = 60*1000)
     public EcomResultDO<Boolean> insertOne(NcUser ncUser) throws Exception{
         EcomResultDO<Boolean> result = new EcomResultDO<>(EcomResultCode.TRUE,true);
         if(ObjectUtil.isEmpty(ncUser)

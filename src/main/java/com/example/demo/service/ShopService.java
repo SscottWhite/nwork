@@ -4,7 +4,7 @@ import com.example.demo.entity.BdShop;
 import com.example.demo.repository.ShopMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.taobao.txc.client.aop.annotation.TxcTransaction;
+//import com.taobao.txc.client.aop.annotation.TxcTransaction;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class ShopService {
     }
     //插入多条
   //  @Transactional(rollbackOn = Exception.class)
-    @TxcTransaction(timeout = 60*1000)
+    //@TxcTransaction(timeout = 60*1000)
     public boolean insertShopList(List<BdShop> list){
         return shopMapper.insertShopList(list) > 0;
     }
